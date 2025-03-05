@@ -1,0 +1,75 @@
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Phone, ChevronRight, Trophy, Gift, Users } from "lucide-react"
+
+export default function CasinoClubLanding() {
+    // WhatsApp redirect function
+    const redirectToWhatsApp = () => {
+        // You can customize the phone number and message
+        const phoneNumber = "5491171532811"
+        const message = "Hola! Quiero crear usuario."
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+        window.open(whatsappUrl, "_blank")
+    }
+
+    return (
+        <div className="flex min-h-screen flex-col bg-black text-white">
+            {/* Hero Section with WhatsApp Button */}
+            <section className="relative py-4 min-h-screen overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    {/* Usando una imagen local en lugar de una URL externa para evitar problemas de CORS */}
+                    <div className="w-full h-full bg-black">
+                        <Image
+                            src="https://getpaidstock.com/tmp/[GetPaidStock.com]-67c89baa061e1.jpg"
+                            alt="Fondo de casino"
+                            fill
+                            className="object-cover opacity-70"
+                            priority
+                            unoptimized
+                        />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70"></div>
+                </div>
+
+                <div className="container relative z-10 flex flex-col items-center text-center h-full mt-0 pt-4 md:pt-8">
+                    <div className="mb-4 bg-red-600/80 px-6 py-3 rounded-lg shadow-lg transform -rotate-2">
+                        <span className="text-xl md:text-2xl font-extrabold text-white">
+                            50% BONUS DE BIENVENIDA PARA NUEVOS USUARIOS
+                        </span>
+                    </div>
+                    <h1 className="mb-4 text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-500">
+                        BIENVENIDO A CASINO CLUB
+                    </h1>
+                    <p className="mb-6 max-w-[700px] text-xl text-gray-300">
+                        Atencion 24 horas, sin limite de retiro ni de apuestas, minimo de carga 500$
+                    </p>
+
+                    {/* WhatsApp Button - Centered */}
+                    <Button
+                        onClick={redirectToWhatsApp}
+                        className="animate-pulse bg-green-600 hover:bg-green-700 text-white px-8 py-6 text-xl rounded-full flex items-center gap-2 shadow-lg shadow-green-600/30"
+                    >
+                        <Phone className="h-6 w-6" />
+                        ¡OBTENE TU BONO 50% HACIENDO CLICK ACA!
+                        <ChevronRight className="h-5 w-5" />
+                    </Button>
+
+                    <div className="mt-8 flex flex-wrap justify-center gap-4">
+                        <div className="flex items-center gap-2 bg-black/60 p-3 rounded-lg border border-yellow-600/30">
+                            <Trophy className="h-5 w-5 text-yellow-500" />
+                            <span>Grandes Premios</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-black/60 p-3 rounded-lg border border-yellow-600/30">
+                            <Gift className="h-5 w-5 text-yellow-500" />
+                            <span>Bonos Exclusivos</span>
+                        </div>
+                        <div className="flex items-center gap-2 bg-black/60 p-3 rounded-lg border border-yellow-600/30">
+                            <Users className="h-5 w-5 text-yellow-500" />
+                            <span>Soporte 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    )
+}
